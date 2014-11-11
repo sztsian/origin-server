@@ -709,7 +709,6 @@ class Upgrader
   def upgrade_gear(login, app_name, gear_uuid, version, ignore_cartridge_version=false, active=false)
     gear_result = OpenShift::Upgrader::GearUpgradeResult.new({
       login: login,
-      app_name: app_name,
       gear_uuid: gear_uuid,
       version: version
     })
@@ -747,6 +746,7 @@ class Upgrader
           :uuid => gear_uuid,
           :namespace => app.domain.namespace,
           :app_uuid => app.uuid,
+          :app_name => app.name,
           :version => version,
           :scalable => app.scalable,
           :ignore_cartridge_version => ignore_cartridge_version.to_s
